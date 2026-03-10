@@ -1,5 +1,4 @@
 # Temat: Symulacja perkolacji
-# Autor: Aleksandra Janic
 
 import random
 import numpy as np
