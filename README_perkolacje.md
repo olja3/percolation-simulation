@@ -1,6 +1,6 @@
 # Percolation Simulation
 
-![Percolating cluster](results/cluster_sizes_p06.png)
+![Percolating cluster](results/percolating_cluster_p06.png)
 
 Simulation of site percolation on a 2D lattice implemented in Python.  
 The project studies the emergence of a spanning cluster and estimates the percolation threshold using Monte Carlo simulations and BFS-based cluster detection.
