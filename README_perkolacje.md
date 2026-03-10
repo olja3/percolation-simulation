@@ -1,5 +1,7 @@
 # Percolation Simulation
 
+![Percolating cluster](results/cluster 0.61.png)
+
 Simulation of site percolation on a 2D lattice implemented in Python.  
 The project studies the emergence of a spanning cluster and estimates the percolation threshold using Monte Carlo simulations and BFS-based cluster detection.
 
@@ -74,6 +76,8 @@ This behavior is characteristic of phase transitions and confirms the correctnes
 
 ### Percolation Configuration (Black and White)
 
+![Percolation grid](results/configuration.png)
+
 - white cells – open sites
 - black cells – closed sites
 
@@ -81,6 +85,12 @@ The figure shows a single random lattice configuration for p = 0.6. From this vi
 
 
 ### Cluster Visualization
+
+![Cluster sizes p=0.4](results/cluster_sizes_p04.png)
+
+![Cluster sizes p=0.6](results/cluster_sizes_p06.png)
+
+![Cluster sizes p=0.7](results/cluster_sizes_p07.png)
 
 - each site is colored according to the size of the cluster it belongs to,
 - the color scale represents the number of sites in the cluster.
@@ -95,6 +105,10 @@ Cluster visualization allows one to observe the transition from a dispersed stru
 
 
 ### Highlighting the Percolating Cluster
+
+![Percolating cluster p=0.6](results/percolating_cluster_p06.png)
+
+![Percolating cluster p=0.7](results/percolating_cluster_p07.png)
 
 When percolation occurs in the system, the percolating cluster is additionally highlighted in red against the background of the other sites. This makes it possible to clearly identify which cluster is responsible for percolation and facilitates visual analysis of the system's structure, especially near the critical threshold.
 
