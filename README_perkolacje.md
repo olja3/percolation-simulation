@@ -1,87 +1,105 @@
-# Symulacja perkolacji – README
+# Percolation Simulation
 
-## 1. Definicja perkolacji
+Simulation of site percolation on a 2D lattice implemented in Python.  
+The project studies the emergence of a spanning cluster and estimates the percolation threshold using Monte Carlo simulations and BFS-based cluster detection.
 
-Perkolacja to zjawisko powstawania połączonej struktury, nazywanej klastrem w losowym ośrodku.  
-W modelu zastosowanym w tym projekcie ośrodkiem jest dwuwymiarowa siatka n × n, w której każde pole:
-- jest otwarte z prawdopodobieństwem p,
-- jest zamknięte z prawdopodobieństwem 1 − p.
+## 1. Definition of Percolation
 
-Wtedy perkolację definiujemy jako ciągłą ścieżkę otwartych pól łączącą górny i dolny brzeg siatki.
+Percolation is a phenomenon in which a connected structure, called a cluster, emerges in a random medium.  
+In the model used in this project, the medium is a two-dimensional n × n lattice where each site:
 
+- is open with probability p,
+- is closed with probability 1 − p.
 
-## 2. Zastosowania perkolacji
-
-Modele perkolacyjne znajdują zastosowanie m.in. w:
-- fizyce, przepływ cieczy przez porowate ośrodki,
-- geologii, przenikanie wody lub ropy przez skały,
-- biologii, rozprzestrzenianie się chorób,
-- sieciach komputerowych, odporność sieci na awarie,
-- socjologii, rozchodzenie się informacji w sieciach społecznych,
-- materiałoznawstwie, przewodnictwo w materiałach kompozytowych.
-
-Tego typu symulacje mogą przedstawiać na przykład czy epidemia obejmie cały obszar, czy sieć pozostanie spójna po losowych uszkodzeniach.
+Percolation is defined as a continuous path of open sites connecting the top and bottom boundaries of the lattice.
 
 
-## 3. Działanie programu
+## 2. Applications of Percolation
 
-Program:
-1. Generuje losowe konfiguracje siatki dla zadanej wartości p.
-2. Wyszukuje klastry otwartych pól metodą BFS.
-3. Sprawdza, czy którykolwiek klaster łączy górny i dolny brzeg.
-4. Powtarza symulację wiele razy dla tego samego p.
-5. Oblicza częstość perkolacji oraz średni rozmiar największego klastra.
-6. Powtarza całość dla różnych wartości p.
+Percolation models have applications in many fields, including:
 
-Dodatkowo program umożliwia graficzną analizę struktury klastrów, w tym wyróżnienie klastra perkolującego.
+- physics – flow of fluids through porous media,
+- geology – penetration of water or oil through rocks,
+- biology – spread of diseases,
+- computer networks – robustness of networks to failures,
+- sociology – spread of information in social networks,
+- materials science – conductivity in composite materials.
 
-
-## 4. Interpretacja wykresów (wyniki symulacji)
-
-### Wykres „Perkolacja vs p”
-- Oś X: prawdopodobieństwo otwarcia pola p,
-- Oś Y: częstość występowania perkolacji.
-
-Na podstawie uzyskanych wyników można zauważyć, że:
-- dla małych wartości p < 0.5 perkolacja praktycznie nie występuje, co oznacza, że otwarte pola tworzą jedynie małe, izolowane klastry,
-- w zakresie p ≈ 0.55–0.65 obserwowany jest gwałtowny wzrost częstości perkolacji, co odpowiada zjawisku krytycznemu, zachowanie to jest zgodne z teoretycznym progiem perkolacji dla nieskończonej siatki kwadratowej, wynoszącym p ≈ 0.59,
-- dla dużych wartości p > 0.65 perkolacja zachodzi niemal zawsze, ponieważ większość pól jest otwarta i tworzy jeden dominujący klaster.
+Such simulations can illustrate, for example, whether an epidemic spreads through an entire region or whether a network remains connected after random failures.
 
 
-### Wykres „Największy klaster vs p”
-- Oś X: prawdopodobieństwo p,
-- Oś Y: średni rozmiar największego klastra.
+## 3. Program Operation
 
-Analiza wykresu pokazuje, że:
-- dla małych wartości p największe klastry są niewielkie i rosną powoli,
-- w pobliżu progu perkolacji następuje gwałtowny wzrost rozmiaru największego klastra,
-- dla większych p jeden klaster obejmuje znaczną część siatki, co świadczy o dominacji jednego połączonego obszaru.
+The program:
 
-Zjawisko to jest charakterystyczne dla przejść fazowych i potwierdza poprawność działania symulacji.
+1. Generates random lattice configurations for a given value of p.
+2. Identifies clusters of open sites using the BFS algorithm.
+3. Checks whether any cluster connects the top and bottom boundaries.
+4. Repeats the simulation many times for the same value of p.
+5. Computes the frequency of percolation and the average size of the largest cluster.
+6. Repeats the entire procedure for different values of p.
 
-
-## 5. Interpretacja rysunków siatki (wizualizacja wyników)
-
-### Konfiguracja perkolacji (czarno-biała)
-- białe pola – pola otwarte,
-- czarne pola – pola zamknięte.
-
-Rysunek przedstawia pojedynczą losową siatkę dla wartości p=0.6. Na jego podstawie można wizualnie ocenić stopień połączenia pól, jednak jednoznaczne stwierdzenie perkolacji wymaga analizy klastrów wykonanej przez program.
+Additionally, the program enables graphical analysis of cluster structures, including highlighting the percolating cluster.
 
 
-### Wizualizacja klastrów 
-- każde pole ma kolor zależny od rozmiaru klastra, do którego należy,
-- skala barwna przedstawia liczbę pól w klastrze.
+## 4. Interpretation of the Plots (Simulation Results)
 
-Na wizualizacjach dla różnych wartości p można zauważyć, że:
-- dla p = 0.4 układ znajduje się poniżej progu perkolacji, dlatego powstaje wiele małych, izolowanych klastrów, a brak jest klastra dominującego zdolnego do połączenia górnego i dolnego brzegu siatki,
-- dla p = 0.6 pojawia się jeden wyraźnie większy klaster, który często odpowiada klastrowi perkolującemu,
-- dla p = 0.7 jeden klaster dominuje nad pozostałymi i obejmuje znaczną część siatki.
+### Plot "Percolation vs p"
 
-Wizualizacja klastrów pozwala zaobserwować moment przejścia od struktury rozproszonej do układu z klastrem dominującym, charakterystyczny dla zjawiska perkolacji.
+- X-axis: probability of a site being open p
+- Y-axis: frequency of percolation occurrence
 
-### Wyróżnienie klastra perkolującego
-W przypadku, gdy w układzie występuje perkolacja, klaster perkolujący jest dodatkowo wyróżniany kolorem czerwonym na tle pozostałych pól. Takie wyróżnienie pozwala jednoznacznie wskazać, który klaster odpowiada za perkolację oraz ułatwia wizualną analizę struktury układu, szczególnie w pobliżu progu krytycznego.
+Based on the obtained results, it can be observed that:
 
+- for small values p < 0.5, percolation almost never occurs, meaning that open sites form only small, isolated clusters,
+- in the range p ≈ 0.55–0.65, a rapid increase in the frequency of percolation is observed, corresponding to a critical phenomenon; this behavior is consistent with the theoretical percolation threshold for an infinite square lattice, which is approximately p ≈ 0.59,
+- for large values p > 0.65, percolation occurs almost always, because most sites are open and form one dominant cluster.
+
+
+### Plot "Largest Cluster vs p"
+
+- X-axis: probability p
+- Y-axis: average size of the largest cluster
+
+The analysis of the plot shows that:
+
+- for small values of p, the largest clusters are small and grow slowly,
+- near the percolation threshold, the size of the largest cluster increases rapidly,
+- for larger values of p, one cluster occupies a significant portion of the lattice, indicating the dominance of a single connected region.
+
+This behavior is characteristic of phase transitions and confirms the correctness of the simulation.
+
+
+## 5. Interpretation of Lattice Visualizations
+
+### Percolation Configuration (Black and White)
+
+- white cells – open sites
+- black cells – closed sites
+
+The figure shows a single random lattice configuration for p = 0.6. From this visualization one can qualitatively assess the connectivity of the sites, although determining percolation requires cluster analysis performed by the program.
+
+
+### Cluster Visualization
+
+- each site is colored according to the size of the cluster it belongs to,
+- the color scale represents the number of sites in the cluster.
+
+From the visualizations for different values of p, it can be observed that:
+
+- for p = 0.4, the system is below the percolation threshold, resulting in many small, isolated clusters and no dominant cluster connecting the top and bottom boundaries,
+- for p = 0.6, a noticeably larger cluster appears, often corresponding to the percolating cluster,
+- for p = 0.7, one cluster dominates and covers a large portion of the lattice.
+
+Cluster visualization allows one to observe the transition from a dispersed structure to a system with a dominant cluster, which is characteristic of the percolation phenomenon.
+
+
+### Highlighting the Percolating Cluster
+
+When percolation occurs in the system, the percolating cluster is additionally highlighted in red against the background of the other sites. This makes it possible to clearly identify which cluster is responsible for percolation and facilitates visual analysis of the system's structure, especially near the critical threshold.
+
+## How to run
+pip install -r requirements.txt
+python percolation.py
 
 
